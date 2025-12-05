@@ -13,7 +13,7 @@ type RespLocations struct {
 type RespLocationPokemon struct {
 	Id						int		`json:"id"`
 	Name					string	`json:"name"`
-	PokemonEncountersint	[]struct{
+	PokemonEncounters		[]struct{
 		Pokemon		struct{
 			Name	string			`json:"name"`
 			Url		string			`json:"url"`
