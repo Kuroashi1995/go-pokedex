@@ -13,6 +13,7 @@ func main() {
 	pokeCache := pokecache.NewCache(time.Second * 30)
 	cfg := &config.Config{
 		Client: pokeClient,
+		Cache: pokeCache,
 	}
-	repl(cfg, pokeCache)
+	repl(cfg)
 }

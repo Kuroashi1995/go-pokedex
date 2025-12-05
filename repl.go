@@ -8,10 +8,9 @@ import (
 	"github.com/Kuroashi1995/go-pokedex/cmd/commands"
 	"github.com/Kuroashi1995/go-pokedex/cmd/input"
 	"github.com/Kuroashi1995/go-pokedex/config"
-	"github.com/Kuroashi1995/go-pokedex/internal/pokecache"
 )
 
-func repl(cfg *config.Config, cache *pokecache.Cache) {
+func repl(cfg *config.Config) {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	for true {
@@ -21,7 +20,10 @@ func repl(cfg *config.Config, cache *pokecache.Cache) {
 		cleaned := input.CleanInput(user_input)
 		for key, command := range commands.GetCommands(){
 			if cleaned[0] == key{
-				err := command.Callback(cfg, cache)
+				if key == "explore" {
+					cfg.CurrentLocation = &cleaned[1]
+				}
+				err := command.Callback(cfg)
 				if err != nil {
 					fmt.Println("An error ocurred processing the command:", err)
 				}
