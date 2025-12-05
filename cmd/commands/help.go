@@ -1,11 +1,14 @@
 package commands
 
 import (
-	"fmt"
 	"errors"
+	"fmt"
+
+	"github.com/Kuroashi1995/go-pokedex/config"
+	"github.com/Kuroashi1995/go-pokedex/internal/pokecache"
 )
 
-func commandHelp() error {
+func commandHelp(config *config.Config, cache *pokecache.Cache) error {
 	commands := GetCommands()
 	if len(commands) == 0  || commands == nil {
 		return errors.New("No commands")
