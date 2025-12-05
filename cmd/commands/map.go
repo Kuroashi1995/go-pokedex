@@ -4,13 +4,12 @@ import (
 	"fmt"
 
 	"github.com/Kuroashi1995/go-pokedex/config"
-	"github.com/Kuroashi1995/go-pokedex/internal/pokecache"
 )
 
 
-func commandMap(config *config.Config, cache *pokecache.Cache) error {
+func commandMap(config *config.Config) error {
 
-	locationsData, err := config.Client.ListLocations(config.Next, cache)
+	locationsData, err := config.Client.ListLocations(config.Next, config.Cache)
 	if err != nil {
 		return err
 	}
@@ -22,13 +21,13 @@ func commandMap(config *config.Config, cache *pokecache.Cache) error {
 	}
 	return nil
 }
-func commandMapBack(config *config.Config, cache *pokecache.Cache) error {
+func commandMapBack(config *config.Config) error {
 	if config.Prev== nil{
 		fmt.Println("you're on the first page")
 		return nil
 	}
 	// Initialize request
-	locationsData, err := config.Client.ListLocations(config.Prev, cache)
+	locationsData, err := config.Client.ListLocations(config.Prev, config.Cache)
 	if err != nil {
 		return err
 	}

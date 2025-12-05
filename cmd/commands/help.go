@@ -5,10 +5,9 @@ import (
 	"fmt"
 
 	"github.com/Kuroashi1995/go-pokedex/config"
-	"github.com/Kuroashi1995/go-pokedex/internal/pokecache"
 )
 
-func commandHelp(config *config.Config, cache *pokecache.Cache) error {
+func commandHelp(config *config.Config) error {
 	commands := GetCommands()
 	if len(commands) == 0  || commands == nil {
 		return errors.New("No commands")
