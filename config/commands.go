@@ -11,4 +11,7 @@ type Config struct {
 	CurrentLocation	*string
 	Prev			*string
 	Next			*string
+	Catching		*string
+	Pokedex			*map[string]pokeapi.RespPokemon
+	Inspecting		*string
 }
