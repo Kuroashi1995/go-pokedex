@@ -11,9 +11,11 @@ import (
 func main() {
 	pokeClient := pokeapi.GetClient(time.Second * 5)
 	pokeCache := pokecache.NewCache(time.Second * 30)
+	pokedex := make(map[string]pokeapi.RespPokemon)
 	cfg := &config.Config{
 		Client: pokeClient,
 		Cache: pokeCache,
+		Pokedex: &pokedex,
 	}
 	repl(cfg)
 }

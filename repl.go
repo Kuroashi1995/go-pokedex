@@ -20,8 +20,13 @@ func repl(cfg *config.Config) {
 		cleaned := input.CleanInput(user_input)
 		for key, command := range commands.GetCommands(){
 			if cleaned[0] == key{
-				if key == "explore" {
-					cfg.CurrentLocation = &cleaned[1]
+				switch key {
+				case "explore":
+						cfg.CurrentLocation = &cleaned[1]
+				case "catch":
+					cfg.Catching = &cleaned[1]
+				case "inspect":
+					cfg.Inspecting = &cleaned[1]
 				}
 				err := command.Callback(cfg)
 				if err != nil {
